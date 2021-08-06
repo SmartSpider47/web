@@ -1,10 +1,45 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
 <head>
 	<meta charset="utf-8"/>
-	<title>Smart47 Games</title>
+	<title>HTML</title>
 </head>
-<body bgcolor="aqua" id="id_body_1">
-	<script type="text/javascript" src="js/main.js"></script>
+<body onkeydown="Pressed_True()" onkeyup="Pressed_False()">
+	<MyTable id = "id_my_table_1">
+
+	</MyTable>
+	<br>
+	<center>
+		<input type="color" id="id_color_1">
+	</center>
+	<script type="text/javascript">
+		var v_pressed = false;
+		var v_col_num = 100;
+		var v_row_num = 55;
+		var v_width = 5;
+		var v_height = 5;
+		var v_str = "";
+		v_str += "<center><table border = \"1\">";
+		for (var i = 0; i < v_row_num; i++) {
+			v_str += "<tr>";
+			for (var j = 0; j < v_col_num; j++) {
+				v_str += "<td width = \"" + v_width + "\" height = \"" + v_height + "\" onmouseenter = \"SetColor(" + ((i * v_col_num) + j + 1) + ")\" id = \"" + "id_" + ((i * v_col_num) + j + 1) + "\"></td>";
+			}
+			v_str += "</tr>";
+		}
+		v_str += "</table></center>";
+		document.getElementById("id_my_table_1").innerHTML = v_str;
+		function Pressed_True () {
+			v_pressed = true;
+		}
+		function Pressed_False () {
+			v_pressed = false;
+		}
+		function SetColor (v_id) {
+			if (v_pressed) {
+				document.getElementById("id_" + v_id).style.backgroundColor = document.getElementById("id_color_1").value;
+			}
+		}
+	</script>
 </body>
 </html>
